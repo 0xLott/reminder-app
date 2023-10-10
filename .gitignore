@@ -27,3 +27,6 @@ replay_pid*
 mvnw
 mvnw.cmd
 HELP.md
+.idea
+.mvn/wrapper
+.gitattributes
