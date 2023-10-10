@@ -31,9 +31,15 @@ public class ReminderController {
         return "reminders";
     }
 
-    @PostMapping("/addReminder")
+    @PostMapping("/add")
     public String addReminder(@ModelAttribute Reminder reminder) {
         reminderService.addReminder(reminder);
+        return "redirect:/reminders";
+    }
+
+    @PostMapping("/delete")
+    public String deleteReminder(@ModelAttribute Reminder reminder) {
+        reminderService.removeReminder(reminder);
         return "redirect:/reminders";
     }
 }

@@ -37,9 +37,6 @@ public class ReminderService {
 
     @PostMapping
     public void removeReminder(Reminder reminder) throws NoSuchElementException {
-        if (!reminders.contains(reminder))
-            throw new NoSuchElementException("Erro: Não foi possível encontrar o lembrete.");
-
         reminders.remove(reminder);
     }
 }
