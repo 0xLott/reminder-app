@@ -35,11 +35,11 @@
 <h4>Novo lembrete</h4>
 <form action="/add" method="POST">
     <label for="date">Date:</label>
-    <input type="date" id="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}">
+    <input type="date" id="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" required>
     <label for="time">Time:</label>
-    <input type="time" id="time" name="time">
+    <input type="time" id="time" name="time" required>
     <label for="message">Message:</label>
-    <input type="text" id="message" name="message">
+    <input type="text" id="message" name="message" required>
     <input type="submit" value="Novo Lembrete">
 </form>
 
