@@ -20,16 +20,16 @@ public class Reminder {
         this.message = message;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public LocalDate getDate() {
         return date;
     }
 
     public LocalTime getTime() {
         return time;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getMessage() {

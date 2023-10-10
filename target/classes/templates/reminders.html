@@ -35,7 +35,7 @@
 <h4>Novo lembrete</h4>
 <form action="/add" method="POST">
     <label for="date">Date:</label>
-    <input type="date" id="date" name="date">
+    <input type="date" id="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}">
     <br>
     <label for="time">Time:</label>
     <input type="time" id="time" name="time">

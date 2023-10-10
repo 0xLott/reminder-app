@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -40,6 +42,6 @@ public class ReminderController {
     @PostMapping("/deleteReminder/{id}")
     public String deleteReminder(@PathVariable Long id) {
         reminderService.removeReminder(id);
-        return "redirect:/"; // Redirect to the list page or wherever you wish
+        return "redirect:/reminders";
     }
 }
