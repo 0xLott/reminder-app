@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <title>Reminders</title>
+</head>
+<body>
+<h1>Lembretes</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Data</th>
+        <th>Horário</th>
+        <th>Mensagem</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reminder : ${reminders}">
+        <td th:text="${reminder.date}"></td>
+        <td th:text="${reminder.time}"></td>
+        <td th:text="${reminder.message}"></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+<h4>Novo Lembrete</h4>
+<form action="/addReminder" method="POST">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date">
+    <br>
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time">
+    <br>
+    <label for="message">Message:</label>
+    <input type="text" id="message" name="message">
+    <br>
+    <input type="submit" value="Novo Lembrete">
+</form>
+
+<!-- Mensagem de erro, caso exista -->
+<div th:if="${error}" class="error-message">
+    <p th:text="${error}"></p>
+</div>
+
+</body>
+</html>
