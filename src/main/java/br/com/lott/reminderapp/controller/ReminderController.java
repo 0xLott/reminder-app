@@ -37,9 +37,9 @@ public class ReminderController {
         return "redirect:/reminders";
     }
 
-    @PostMapping("/delete")
-    public String deleteReminder(@ModelAttribute Reminder reminder) {
-        reminderService.removeReminder(reminder);
-        return "redirect:/reminders";
+    @PostMapping("/deleteReminder/{id}")
+    public String deleteReminder(@PathVariable Long id) {
+        reminderService.removeReminder(id);
+        return "redirect:/"; // Redirect to the list page or wherever you wish
     }
 }

@@ -35,8 +35,17 @@ public class ReminderService {
         reminders.add(reminder);
     }
 
-    @PostMapping
-    public void removeReminder(Reminder reminder) throws NoSuchElementException {
-        reminders.remove(reminder);
+    public void removeReminder(Long id) {
+        Reminder reminderToRemove = null;
+        for (Reminder reminder : reminders) {
+            if (reminder.getId() == id) {
+                reminderToRemove = reminder;
+                break;
+            }
+        }
+
+        if (reminderToRemove != null) {
+            reminders.remove(reminderToRemove);
+        }
     }
 }

@@ -22,16 +22,14 @@
         <td th:text="${reminder.time}"></td>
         <td th:text="${reminder.message}"></td>
         <td>
-            <form th:action="@{/delete}" th:object="${reminder}" method="post">
-                <button type="submit" class="delete-button">
+            <form th:action="@{/deleteReminder/{id}(id=${reminder.id})}" method="post">
+                <button type="submit">
                     <img src="../static/icons/delete_icon.svg" alt="Excluir">
                 </button>
             </form>
         </td>
     </tr>
     </tbody>
-</table>
-
 </table>
 
 <h4>Novo lembrete</h4>
