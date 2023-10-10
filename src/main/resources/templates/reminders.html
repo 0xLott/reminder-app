@@ -22,7 +22,7 @@
         <td th:text="${reminder.time}"></td>
         <td th:text="${reminder.message}"></td>
         <td>
-            <form th:action="@{/deleteReminder/{id}(id=${reminder.id})}" method="post">
+            <form th:action="@{/delete/{id}(id=${reminder.id})}" method="post">
                 <button type="submit">
                     <img src="../static/icons/delete_icon.svg" alt="Excluir">
                 </button>

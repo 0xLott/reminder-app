@@ -39,7 +39,7 @@ public class ReminderController {
         return "redirect:/reminders";
     }
 
-    @PostMapping("/deleteReminder/{id}")
+    @PostMapping("/delete/{id}")
     public String deleteReminder(@PathVariable Long id) {
         reminderService.removeReminder(id);
         return "redirect:/reminders";
