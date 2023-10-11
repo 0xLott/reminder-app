@@ -1,0 +1,111 @@
+/* Purple       #4F4BA9 */
+/* Blue         #2569B0 */
+/* Light Blue   #28B7C5 */
+
+html {
+    font-size: 20px;
+}
+
+body {
+    font-size: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+.container {
+   padding: 0 15em 0 15em;
+}
+
+.reminders-table th, .reminders-table td {
+    padding: 12px 15px;
+}
+
+.reminders-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 480px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.07);
+}
+
+.reminders-table thead tr {
+    thead {
+        tr {
+            background-color: #28B7C5;
+            color: white;
+            text-align: left;
+            font-weight: bold;
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid gainsboro;
+            font-weight: 100;  
+        }
+
+        // Alterna as cores das linhas
+        tr:nth-of-type(even) { 
+            background-color: #f2f2f2;
+        }
+    }
+}
+
+form {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.form-container {
+  background-color: #f2f2f2;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.07);
+  max-width: 420px;
+}
+
+.form-input:not(.button) {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+
+  &:focus {
+    border-color: #4F4BA9;
+    outline: none;
+  }
+}
+
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+button, input.button {
+    border: none;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: #28B7C5;
+    }
+}
