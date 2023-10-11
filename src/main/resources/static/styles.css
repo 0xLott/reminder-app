@@ -2,7 +2,7 @@
 /* Blue #2569B0 */
 /* Light Blue #28B7C5 */
 html {
-    font-size: 20px;
+    font-size: 18px;
 }
 body {
     font-size: 1rem;
@@ -17,7 +17,10 @@ h3 {
     font-size: 1.25rem;
 }
 .container {
-    padding: 0 15em 0 15em;
+    padding: 0 15em 0 10em;
+}
+.display-reminders, .new-reminder {
+    margin: 2em 0;
 }
 .reminders-table th, .reminders-table td {
     padding: 12px 15px;
@@ -30,18 +33,18 @@ h3 {
     overflow: hidden;
     box-shadow: 0 0 18px rgba(0, 0, 0, 0.07);
 }
-.reminders-table thead tr thead tr {
+.reminders-table thead tr {
     background-color: #28b7c5;
     color: white;
     text-align: left;
     font-weight: bold;
 }
-.reminders-table thead tr tbody tr {
+.reminders-table tbody tr {
     border-bottom: 1px solid gainsboro;
     font-weight: 100;
 }
-.reminders-table thead tr tbody tr:nth-of-type(even) {
-    background-color: #f2f2f2;
+.reminders-table tbody tr:nth-of-type(even) {
+    background-color: #f4f4f4;
 }
 form {
     margin: 0;
@@ -49,7 +52,6 @@ form {
     border: none;
 }
 .form-container {
-    background-color: #f2f2f2;
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 0 18px rgba(0, 0, 0, 0.07);
@@ -75,14 +77,16 @@ form {
 button, input.button {
     border: none;
     border-radius: 5px;
-
-    background-color: #97e8f0;
-    padding: 10px;
-
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #daf5f7;
+    padding: 2%;
+    font-family: 'Gabarito', sans-serif;
 }
 button:hover, input.button:hover {
     background-color: #28b7c5;
+}
+#delete-button {
+    max-height: 20px;
 }

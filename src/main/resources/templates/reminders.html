@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Reminders</title>
+    <title>Lista de Lembretes</title>
     <link rel="stylesheet" type="text/css" href="../static/styles.css">
     <link href='https://fonts.googleapis.com/css?family=Gabarito' rel='stylesheet'>
 </head>
@@ -10,49 +10,63 @@
 <body style="font-family: 'Gabarito', sans-serif;">
 
 <section class="container">
-    <h1>⏰ Lista de Lembretes</h1>
-    <table class="reminders-table">
-        <thead>
-        <tr>
-            <th>Data</th>
-            <th>Horário</th>
-            <th>Mensagem</th>
-            <th>Ações</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="reminder, rowStat : ${reminders}">
-            <td th:text="${reminder.date}"></td>
-            <td th:text="${reminder.time}"></td>
-            <td th:text="${reminder.message}"></td>
-            <td>
-                <form th:action="@{/delete/{id}(id=${reminder.id})}" method="post">
-                    <button type="submit">
-                        <img src="../static/icons/delete_icon.svg" alt="Excluir">
-                    </button>
-                </form>
-            </td>
-        </tr>
+    <section class="display-reminders">
+        <h1>⏰ Lista de Lembretes</h1>
+        <p>Seja bem-vindo(a) à sua lista de lembretes!</p>
 
-        </tbody>
-    </table>
+        <table class="reminders-table">
+            <thead>
+            <tr>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Mensagem</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="reminder, rowStat : ${reminders}">
+                <td th:text="${#temporals.format(reminder.date, 'dd-MM-yyyy')}"></td>
+                <td th:text="${#temporals.format(reminder.time, 'HH:mm')}"></td>
+                <td th:text="${reminder.message}"></td>
+                <td>
+                    <form th:action="@{/delete/{id}(id=${reminder.id})}" method="post">
+                        <button type="submit">
+                            <img id="delete-button" src="../static/icons/delete_icon.svg" alt="Excluir">
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
 
-    <h3>Novo lembrete</h3>
-    <form class="form-container" action="/add" method="POST">
-        <label for="date">Data:</label>
-        <input class="form-input" type="date" id="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" required>
-        <label for="time">Horário:</label>
-        <input class="form-input" type="time" id="time" name="time" required>
-        <label for="message">Mensagem:</label>
-        <input class="form-input" type="text" id="message" name="message" required>
-        <input class="button" type="submit" value="Novo Lembrete" >
-    </form>
+    <section class="new-reminder">
+        <h3>Novo lembrete</h3>
+        <p>Para adicionar um lembrete, preencha os campos a seguir e clique em "Novo Lembrete"</p>
+
+        <form class="form-container" action="/add" method="POST">
+            <label for="date">Data:</label>
+            <input class="form-input" type="date" id="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" required>
+            <label for="time">Horário:</label>
+            <input class="form-input" type="time" id="time" name="time" required>
+            <label for="message">Mensagem:</label>
+            <input class="form-input" type="text" id="message" name="message" required>
+            <input class="button" type="submit" value="Novo Lembrete" >
+        </form>
+    </section>
+
 </section>
 
 <!-- Mensagem de erro, caso exista -->
 <div th:if="${error}" class="error-message">
     <p th:text="${error}"></p>
 </div>
+
+<footer style="margin: 5em 0; padding: 0 10em">
+    <p>Desenvolvido por Letícia Lott</p>
+    <span><img src="../static/icons/github-icon.svg" alt="github.com"></span>
+    <span>/ 0xLott</span>
+</footer>
 
 </body>
 </html>

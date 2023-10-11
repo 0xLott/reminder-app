@@ -3,7 +3,7 @@
 /* Light Blue   #28B7C5 */
 
 html {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 body {
@@ -22,8 +22,12 @@ h3 {
     font-size: 1.25rem;
 }
 
+.display-reminders, .new-reminder {
+    margin: 2em 0;
+}
+
 .container {
-   padding: 0 15em 0 15em;
+   padding: 0 15em 0 10em;
 }
 
 .reminders-table th, .reminders-table td {
@@ -34,32 +38,28 @@ h3 {
     border-collapse: collapse;
     margin: 25px 0;
     min-width: 480px;
+    max-width: 720px;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 18px rgba(0, 0, 0, 0.07);
 }
 
-.reminders-table thead tr {
-    thead {
-        tr {
-            background-color: #28B7C5;
-            color: white;
-            text-align: left;
-            font-weight: bold;
-        }
-    }
+.reminders-table {
+  thead tr {
+    background-color: #28B7C5;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+  }
 
-    tbody {
-        tr {
-            border-bottom: 1px solid gainsboro;
-            font-weight: 100;  
-        }
+  tbody tr {
+    border-bottom: 1px solid gainsboro;
+    font-weight: 100;
 
-        // Alterna as cores das linhas
-        tr:nth-of-type(even) { 
-            background-color: #f2f2f2;
-        }
+    &:nth-of-type(even) {
+      background-color: #f4f4f4;
     }
+  }
 }
 
 form {
@@ -69,7 +69,6 @@ form {
 }
 
 .form-container {
-  background-color: #f2f2f2;
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.07);
@@ -91,7 +90,6 @@ form {
   }
 }
 
-
 .form-label {
   font-weight: bold;
   margin-bottom: 5px;
@@ -100,12 +98,18 @@ form {
 button, input.button {
     border: none;
     border-radius: 5px;
-
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #daf5f7;
+    padding: 2%;
+    font-family: 'Gabarito', sans-serif;
 
     &:hover {
         background-color: #28B7C5;
     }
+}
+
+#delete-button {
+  max-height: 20px;
 }
