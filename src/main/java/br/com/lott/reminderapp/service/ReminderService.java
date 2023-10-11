@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ReminderService {
@@ -17,12 +16,16 @@ public class ReminderService {
 
     public ReminderService() {
         this.reminders = new ArrayList<>();
-        reminders.add(new Reminder(LocalDate.now(), LocalTime.now(), "Fazer compras no supermercado"));
-        reminders.add(new Reminder(LocalDate.now(), LocalTime.now(), "Pagar boleto"));
+
+        // População da tabela:
+        reminders.add(new Reminder(LocalDate.of(2025, 12, 14), LocalTime.of(18, 30), "Cerimônia de formatura"));
+        reminders.add(new Reminder(LocalDate.of(2021, 04, 28), LocalTime.of(15, 30), "Pagar boleto"));
+        reminders.add(new Reminder(LocalDate.of(2023, 10, 31), LocalTime.of(19, 40), "Festa de Halloween"));
     }
 
     @GetMapping
     public List<Reminder> getAllReminders() {
+        sortByDate(reminders);
         return reminders;
     }
 
@@ -34,6 +37,7 @@ public class ReminderService {
         reminders.add(reminder);
     }
 
+    @PostMapping
     public void removeReminder(Long id) {
         Reminder reminderToRemove = null;
         for (Reminder reminder : reminders) {
@@ -46,5 +50,21 @@ public class ReminderService {
         if (reminderToRemove != null) {
             reminders.remove(reminderToRemove);
         }
+    }
+
+    /**
+     * Utiliza classe anônima para ordenar objetos do tipo Reminder, que são comparáveis uma vez que implementam a
+     * interface Comparable<>.
+     * @param reminders Lista de lembretes original.
+     * @return Lista de lembretes ordenada.
+     */
+    public List<Reminder> sortByDate(List<Reminder> reminders) {
+        reminders.sort(new Comparator<Reminder>() {
+            @Override
+            public int compare(Reminder o1, Reminder o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        return reminders;
     }
 }

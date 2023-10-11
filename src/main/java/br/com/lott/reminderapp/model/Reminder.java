@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class Reminder {
+public class Reminder implements Comparable<Reminder> {
     private final int id;
     private static int nextId = 0;
     private LocalDate date;
@@ -37,11 +37,15 @@ public class Reminder {
     }
 
     @Override
+    public int compareTo(Reminder o) {
+        return this.date.compareTo(((Reminder) o).getDate());
+    }
+
+    @Override
     public String toString() {
         return "id: " + id +
                 "\nData: " + date +
                 "\nHorário: " + time +
                 "\nMensagem: '" + message + '\'';
     }
-
 }
