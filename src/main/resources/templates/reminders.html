@@ -14,32 +14,6 @@
         <h1>⏰ Lista de Lembretes</h1>
         <p>Seja bem-vindo(a) à sua lista de lembretes!</p>
 
-<!--        <table class="reminders-table">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>Data</th>-->
-<!--                <th>Horário</th>-->
-<!--                <th>Mensagem</th>-->
-<!--                <th>Ações</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr th:each="reminder, rowStat : ${reminders}">-->
-<!--                <td th:text="${#temporals.format(reminder.date, 'dd-MM-yyyy')}"></td>-->
-<!--                <td th:text="${#temporals.format(reminder.time, 'HH:mm')}"></td>-->
-<!--                <td th:text="${reminder.message}"></td>-->
-<!--                <td>-->
-<!--                    <form th:action="@{/delete/{id}(id=${reminder.id})}" method="post">-->
-<!--                        <button type="submit">-->
-<!--                            <img id="delete-button" src="../static/icons/delete_icon.svg" alt="Excluir">-->
-<!--                        </button>-->
-<!--                    </form>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-
-        View
         <table class="reminders-table">
             <thead>
             <tr>
@@ -55,7 +29,8 @@
              com que a célula se estenda conforme a quantidade de lembretes para cadda data. -->
             <tbody th:each="entry : ${reminders}">
             <tr th:each="reminder, stat : ${entry.value}">
-                <td th:if="${stat.index == 0}" th:text="${#temporals.format(entry.key, 'dd-MM-yyyy')}" th:rowspan="${#lists.size(entry.value)}"></td>
+                <td th:if="${stat.index == 0}" th:text="${#temporals.format(entry.key, 'dd-MM-yyyy')}"
+                    th:rowspan="${#lists.size(entry.value)}"></td>
                 <td th:text="${#temporals.format(reminder.time, 'HH:mm')}"></td>
                 <td th:text="${reminder.message}"></td>
                 <td>
@@ -76,12 +51,13 @@
 
         <form class="form-container" action="/add" method="POST">
             <label for="date">Data:</label>
-            <input class="form-input" type="date" id="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" required>
+            <input class="form-input" type="date" id="date" name="date"
+                   th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" required>
             <label for="time">Horário:</label>
             <input class="form-input" type="time" id="time" name="time" required>
             <label for="message">Mensagem:</label>
             <input class="form-input" type="text" id="message" name="message" required>
-            <input class="button" type="submit" value="Novo Lembrete" >
+            <input class="button" type="submit" value="Novo Lembrete">
         </form>
     </section>
 

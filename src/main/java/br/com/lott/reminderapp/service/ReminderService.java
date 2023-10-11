@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +29,7 @@ public class ReminderService {
 
     /**
      * Utiliza o método sortByDate para ordenar a lista de lembretes. Em seguida, os agrupa a partir de suas datas.
+     *
      * @return Map agrupando a lista de lembrete por data.
      */
     @GetMapping
