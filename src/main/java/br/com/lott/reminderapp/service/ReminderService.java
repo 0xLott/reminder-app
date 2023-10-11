@@ -34,6 +34,9 @@ public class ReminderService {
         if (reminder.getMessage() == null || reminder.getMessage().isEmpty())
             throw new IllegalArgumentException("Erro: A mensagem deve possuir conteúdo.");
 
+        Reminder existingReminder = (Reminder) reminders.stream()
+                        .filter(r -> r.getDate().equals(reminder.getDate()));
+
         reminders.add(reminder);
     }
 
@@ -47,24 +50,22 @@ public class ReminderService {
             }
         }
 
-        if (reminderToRemove != null) {
+        if (reminderToRemove != null)
             reminders.remove(reminderToRemove);
-        }
     }
 
     /**
      * Utiliza classe anônima para ordenar objetos do tipo Reminder, que são comparáveis uma vez que implementam a
      * interface Comparable<>.
+     *
      * @param reminders Lista de lembretes original.
-     * @return Lista de lembretes ordenada.
      */
-    public List<Reminder> sortByDate(List<Reminder> reminders) {
+    public void sortByDate(List<Reminder> reminders) {
         reminders.sort(new Comparator<Reminder>() {
             @Override
             public int compare(Reminder o1, Reminder o2) {
                 return o1.compareTo(o2);
             }
         });
-        return reminders;
     }
 }
