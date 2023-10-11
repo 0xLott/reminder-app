@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ReminderController {
@@ -26,7 +28,7 @@ public class ReminderController {
 
     @GetMapping("/reminders")
     public String displayTable(Model model) {
-        List<Reminder> allReminders = reminderService.getAllReminders();
+        Map<LocalDate, List<Reminder>> allReminders = reminderService.getAllReminders();
         model.addAttribute("reminders", allReminders);
         return "reminders";
     }

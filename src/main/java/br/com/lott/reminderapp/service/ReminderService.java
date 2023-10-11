@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ReminderService {
@@ -23,19 +24,20 @@ public class ReminderService {
         reminders.add(new Reminder(LocalDate.of(2023, 10, 31), LocalTime.of(19, 40), "Festa de Halloween"));
     }
 
+    /**
+     * Utiliza o método sortByDate para ordenar a lista de lembretes. Em seguida, os agrupa a partir de suas datas.
+     * @return Map agrupando a lista de lembrete por data.
+     */
     @GetMapping
-    public List<Reminder> getAllReminders() {
+    public Map<LocalDate, List<Reminder>> getAllReminders() {
         sortByDate(reminders);
-        return reminders;
+        return reminders.stream().collect(Collectors.groupingBy(Reminder::getDate));
     }
 
     @PostMapping
     public void addReminder(Reminder reminder) throws IllegalArgumentException {
         if (reminder.getMessage() == null || reminder.getMessage().isEmpty())
             throw new IllegalArgumentException("Erro: A mensagem deve possuir conteúdo.");
-
-        Reminder existingReminder = (Reminder) reminders.stream()
-                        .filter(r -> r.getDate().equals(reminder.getDate()));
 
         reminders.add(reminder);
     }

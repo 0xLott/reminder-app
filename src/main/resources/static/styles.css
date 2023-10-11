@@ -43,9 +43,6 @@ h3 {
     border-bottom: 1px solid gainsboro;
     font-weight: 100;
 }
-.reminders-table tbody tr:nth-of-type(even) {
-    background-color: #f4f4f4;
-}
 form {
     margin: 0;
     padding: 0;
