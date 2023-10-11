@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.LinkedHashMap;
 
 @Service
 public class ReminderService {
@@ -28,14 +29,24 @@ public class ReminderService {
     }
 
     /**
-     * Utiliza o método sortByDate para ordenar a lista de lembretes. Em seguida, os agrupa a partir de suas datas.
+     * Utiliza o método sortByDate para ordenar a lista de lembretes. Em seguida, os agrupa a partir de suas datas em
+     * um novo LinkedHashMap, estrutura que preserva a ordem de inserção, de modo que o Map `groupedReminders` estará
+     * ordenado por data.
      *
      * @return Map agrupando a lista de lembrete por data.
      */
     @GetMapping
     public Map<LocalDate, List<Reminder>> getAllReminders() {
         sortByDate(reminders);
-        return reminders.stream().collect(Collectors.groupingBy(Reminder::getDate));
+
+        Map<LocalDate, List<Reminder>> groupedReminders = reminders.stream()
+                .collect(Collectors.groupingBy(
+                        Reminder::getDate,
+                        LinkedHashMap::new,
+                        Collectors.toList()
+                ));
+
+        return groupedReminders;
     }
 
     @PostMapping
