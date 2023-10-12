@@ -23,6 +23,13 @@ A escolha da linguagem **Java**, além da opção de utilizar o Spring Boot, se 
 
 Ademais, optou-se por desenvolver uma **aplicação web** pela facilidade de acesso e execução por parte do usuário.
 
+
+---
+## Testes unitários
+A aplicação foi testada por meio do framework de testes unitários JUnit, executado na ferramenta de testes da IDE IntelliJ IDEA. Para isso, foram criados casos de teste envolvendo métodos e restrições relevantes do software.
+
+![Captura de tela da execução de testes com sucesso](./src/main/resources/static/successful_testing.jpg)
+
 ---
 ## Instruções de execução
 
